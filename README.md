@@ -79,6 +79,8 @@ ApiFoxIR 是一个面向 2026-03 Apifox 供应链事件的本地应急排查 CLI
 
 ## 构建
 
+排查工具：
+
 ```bash
 go build -o ApiFoxIR ./cmd/ApiFoxIR
 ```
@@ -87,6 +89,18 @@ go build -o ApiFoxIR ./cmd/ApiFoxIR
 
 ```bash
 GOOS=windows GOARCH=amd64 go build -o ApiFoxIR.exe ./cmd/ApiFoxIR
+```
+
+清理工具：
+
+```bash
+go build -o ApiFoxIR-clean ./cmd/ApiFoxIR-clean
+```
+
+为 Windows 主机交叉编译：
+
+```bash
+GOOS=windows GOARCH=amd64 go build -o ApiFoxIR-clean.exe ./cmd/ApiFoxIR-clean
 ```
 
 ## 使用
@@ -131,6 +145,34 @@ GOOS=windows GOARCH=amd64 go build -o ApiFoxIR.exe ./cmd/ApiFoxIR
 
 ```bash
 ./ApiFoxIR -copy-apifox-evidence
+```
+
+## 清理工具使用
+
+`ApiFoxIR-clean` 用于在保留最小安全控制的前提下，删除已命中的恶意残留。默认只删除 LevelDB 中命中 IOC 的 `.ldb/.log` 文件，不会直接清空整个 Apifox 数据目录。
+
+预演全量清理：
+
+```bash
+./ApiFoxIR-clean -all
+```
+
+实际执行全量清理：
+
+```bash
+./ApiFoxIR-clean -all -dry-run=false
+```
+
+只清理 LevelDB 命中 IOC 的文件：
+
+```bash
+./ApiFoxIR-clean -dry-run=false
+```
+
+如果你只想删除持久化位置里的可疑条目，可单独开启：
+
+```bash
+./ApiFoxIR-clean -remove-persistence -dry-run=false
 ```
 
 ## 输出解释
