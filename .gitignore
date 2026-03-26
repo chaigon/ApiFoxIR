@@ -1,0 +1,64 @@
+# Local forensic output
+out/
+
+# Private internal docs
+docs/elastic-security-playbook.md
+
+# Local release artifacts in repo root
+/ApiFoxIR
+/ApiFoxIR.exe
+/ApiFoxIR-clean
+/ApiFoxIR-clean.exe
+/apifox-ir
+/apifox-ir.exe
+/apifox-ir-clean
+/apifox-ir-clean.exe
+/apifox-ir-clean-darwin-amd64
+
+# Local archives
+/*.zip
+/*.tar
+/*.tar.gz
+/*.tgz
+/*.7z
+
+# Build artifacts
+bin/
+build/
+dist/
+release/
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+
+# Coverage
+coverage.out
+coverage.html
+*.coverprofile
+.coverprofile
+
+# Go workspace files used locally
+go.work
+go.work.sum
+
+# Environment and local config
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.local
+
+# Logs and runtime files
+*.log
+*.pid
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
